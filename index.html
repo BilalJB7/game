@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funny Guess Game</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Poppins', sans-serif;
+  background: linear-gradient(135deg,#ffecd2,#fcb69f);
+  overflow:hidden;
+}
+
+.container{
+  background:rgba(255,255,255,0.95);
+  padding:30px 50px;
+  border-radius:25px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  width:350px;
+}
+
+h1{
+  font-size:28px;
+  color:#ff4d6d;
+  margin-bottom:20px;
+  animation:fadeIn 1s linear;
+}
+
+button{
+  padding:15px 25px;
+  margin:10px;
+  font-size:22px;
+  border:none;
+  border-radius:15px;
+  cursor:pointer;
+  background:#ff6b81;
+  color:white;
+  transition:0.2s;
+}
+
+button:hover{
+  transform:scale(1.15);
+  background:#ff4757;
+}
+
+.message{
+  font-size:22px;
+  margin-top:20px;
+  min-height:30px;
+  color:#333;
+}
+
+.hidden{
+  display:none;
+}
+
+.final{
+  font-family:'Fredoka One', cursive;
+  font-size:26px;
+  color:#ff4d6d;
+  margin-top:20px;
+  text-shadow:0 0 5px #fff,0 0 15px #ff758c;
+  animation:glow 1s infinite alternate;
+}
+
+@keyframes glow{
+  0%{text-shadow:0 0 5px #fff,0 0 15px #ff758c;}
+  50%{text-shadow:0 0 10px #fff,0 0 25px #ff4d6d;}
+  100%{text-shadow:0 0 5px #fff,0 0 15px #ff758c;}
+}
+
+@keyframes fadeIn{
+  0%{opacity:0; transform:scale(0.8);}
+  100%{opacity:1; transform:scale(1);}
+}
+</style>
+</head>
+<body>
+
+<!-- الصفحة الرئيسية -->
+<div class="container" id="mainPage">
+  <h1>Guess a number between 1 and 5 🤔</h1>
+  <button onclick="goPage(1)">1</button>
+  <button onclick="goPage(2)">2</button>
+  <button onclick="goPage(3)">3</button>
+  <button onclick="goPage(4)">4</button>
+  <button onclick="goPage(5)">5</button>
+</div>
+
+<!-- صفحات الأرقام -->
+<div class="container hidden" id="page1">
+  <h1>Try again 😆</h1>
+  <button onclick="back()">Back</button>
+</div>
+
+<div class="container hidden" id="page2">
+  <h1>Almost 😂</h1>
+  <button onclick="back()">Back</button>
+</div>
+
+<div class="container hidden" id="page3">
+  <h1>Haha, nope 😜</h1>
+  <button onclick="back()">Back</button>
+</div>
+
+<div class="container hidden" id="page4">
+  <h1>Keep guessing 🤔</h1>
+  <button onclick="back()">Back</button>
+</div>
+
+<div class="container hidden" id="page5">
+  <h1 class="final">🥳 Hahaha, you won! Here's a cute surprise 🐒🍌</h1>
+  <button onclick="back()">Back</button>
+</div>
+
+<script>
+function goPage(num){
+  document.getElementById("mainPage").classList.add("hidden");
+  document.getElementById("page"+num).classList.remove("hidden");
+}
+
+function back(){
+  document.querySelectorAll(".container").forEach(c=>c.classList.add("hidden"));
+  document.getElementById("mainPage").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
